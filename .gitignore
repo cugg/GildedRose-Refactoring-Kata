@@ -11,3 +11,5 @@ bin/
 .gradle
 /build/
 
+newrun.txt
+
