@@ -19,7 +19,7 @@ class GildedRose {
     private void updateItem(TypedItem item) {
         updateQuality(item);
         updateSellIn(item);
-        if (item.item.sellIn < 0) {
+        if (item.getSellIn() < 0) {
             updateQualityWhenExpired(item);
         }
     }
@@ -38,7 +38,7 @@ class GildedRose {
 
     private void updateSellIn(TypedItem item) {
         if (!item.type.equals(LEGENDARY)) {
-            item.item.sellIn = item.item.sellIn - 1;
+            item.decreaseSellIn();
         }
     }
 
@@ -57,11 +57,11 @@ class GildedRose {
     private void updateBackstagePassQuality(TypedItem item) {
         item.increaseQuality();
 
-        if (item.item.sellIn < 11) {
+        if (item.getSellIn() < 11) {
             item.increaseQuality();
         }
 
-        if (item.item.sellIn < 6) {
+        if (item.getSellIn() < 6) {
             item.increaseQuality();
         }
 
