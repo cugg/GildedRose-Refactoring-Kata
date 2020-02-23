@@ -1,9 +1,8 @@
 package com.gildedrose;
 
+import static com.gildedrose.ItemType.*;
+
 class GildedRose {
-    public static final String AGED_BRIE = "Aged Brie";
-    public static final String BACKSTAGE_PASSES_TO_A_TAFKAL_80_ETC_CONCERT = "Backstage passes to a TAFKAL80ETC concert";
-    public static final String SULFURAS_HAND_OF_RAGNAROS = "Sulfuras, Hand of Ragnaros";
     private Item[] items;
 
     GildedRose(Item[] items) {
@@ -12,70 +11,71 @@ class GildedRose {
 
     void updateQuality() {
         for (Item item : items) {
-            updateItem(item);
+            TypedItem typedItem = new TypedItem(item);
+            updateItem(typedItem);
         }
     }
 
-    private void updateItem(Item item) {
+    private void updateItem(TypedItem item) {
         updateQuality(item);
         updateSellIn(item);
-        if (item.sellIn < 0) {
+        if (item.item.sellIn < 0) {
             updateQualityWhenExpired(item);
         }
     }
 
-    private void updateQualityWhenExpired(Item item) {
-        if (item.name.equals(AGED_BRIE)) {
+    private void updateQualityWhenExpired(TypedItem item) {
+        if (item.type.equals(AGED)) {
             increaseQuality(item);
-        } else if (item.name.equals(BACKSTAGE_PASSES_TO_A_TAFKAL_80_ETC_CONCERT)) {
-            item.quality = 0;
-        } else if (item.name.equals(SULFURAS_HAND_OF_RAGNAROS)) {
+        } else if (item.type.equals(TICKET)) {
+            item.item.quality = 0;
+        } else if (item.type.equals(LEGENDARY)) {
             return;
         } else {
             decreaseQuality(item);
         }
     }
 
-    private void updateSellIn(Item item) {
-        if (!item.name.equals(SULFURAS_HAND_OF_RAGNAROS)) {
-            item.sellIn = item.sellIn - 1;
+    private void updateSellIn(TypedItem item) {
+        if (!item.type.equals(LEGENDARY)) {
+            item.item.sellIn = item.item.sellIn - 1;
         }
     }
 
-    private void updateQuality(Item item) {
-        if (item.name.equals(AGED_BRIE)) {
+    private void updateQuality(TypedItem item) {
+        if (item.type.equals(AGED)) {
             increaseQuality(item);
-        } else if (item.name.equals(BACKSTAGE_PASSES_TO_A_TAFKAL_80_ETC_CONCERT)) {
+        } else if (item.type.equals(TICKET)) {
             updateBackstagePassQuality(item);
         } else {
-            if (!item.name.equals(SULFURAS_HAND_OF_RAGNAROS)) {
+            if (!item.type.equals(LEGENDARY)) {
                 decreaseQuality(item);
             }
         }
     }
 
-    private void updateBackstagePassQuality(Item item) {
+    private void updateBackstagePassQuality(TypedItem item) {
         increaseQuality(item);
 
-        if (item.sellIn < 11) {
+        if (item.item.sellIn < 11) {
             increaseQuality(item);
         }
 
-        if (item.sellIn < 6) {
+        if (item.item.sellIn < 6) {
             increaseQuality(item);
         }
 
     }
 
-    static void increaseQuality(Item item) {
-        if (item.quality < 50) {
-            item.quality = item.quality + 1;
+    static void increaseQuality(TypedItem item) {
+        if (item.item.quality < 50) {
+            item.item.quality = item.item.quality + 1;
         }
     }
 
-    static void decreaseQuality(Item item) {
-        if (item.quality > 0) {
-            item.quality = item.quality - 1;
+    static void decreaseQuality(TypedItem item) {
+        if (item.item.quality > 0) {
+            item.item.quality = item.item.quality - 1;
         }
     }
 }

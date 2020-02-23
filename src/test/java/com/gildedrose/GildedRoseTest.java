@@ -13,7 +13,7 @@ class GildedRoseTest {
     void never_increases_quality_over_50() {
         for (Item item : itemsOfAllTypes) {
             item.quality = 50;
-            GildedRose.increaseQuality(item);
+            GildedRose.increaseQuality(new TypedItem(item));
             assertThat(item.quality).isLessThanOrEqualTo(50);
         }
     }
@@ -21,7 +21,7 @@ class GildedRoseTest {
     void never_decreases_quality_under_0() {
         for (Item item : itemsOfAllTypes) {
             item.quality = 0;
-            GildedRose.decreaseQuality(item);
+            GildedRose.decreaseQuality(new TypedItem(item));
             assertThat(item.quality).isGreaterThanOrEqualTo(0);
         }
     }
