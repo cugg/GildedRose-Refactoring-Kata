@@ -6,8 +6,8 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class LegendaryItemTest {
-    public static final int INIT_SELL_IN = 0;
-    Item item;
+    private static final int INIT_SELL_IN = 0;
+    private Item item;
 
     @BeforeEach
     void init(){
