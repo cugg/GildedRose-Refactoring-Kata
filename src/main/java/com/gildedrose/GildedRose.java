@@ -64,6 +64,5 @@ class GildedRose {
         if (item.getSellIn() < 6) {
             item.increaseQuality();
         }
-
     }
 }

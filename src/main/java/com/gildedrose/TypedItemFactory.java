@@ -8,20 +8,15 @@ class TypedItemFactory {
     private static final String SULFURAS_HAND_OF_RAGNAROS = "Sulfuras, Hand of Ragnaros";
 
     static TypedItem createTypedItem(Item item) {
-        ItemType type = DEFAULT;
         switch (item.name) {
             case AGED_BRIE:
-                type = AGED;
-                break;
+                return new AgedItem(item);
             case BACKSTAGE_PASSES_TO_A_TAFKAL_80_ETC_CONCERT:
-                type = TICKET;
-                break;
+                return new TicketItem(item);
             case SULFURAS_HAND_OF_RAGNAROS:
-                type = LEGENDARY;
-                break;
+                return new LegendaryItem(item);
             default:
-                break;
+                return new TypedItem(item, DEFAULT);
         }
-        return new TypedItem(item, type);
     }
 }
