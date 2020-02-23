@@ -13,6 +13,7 @@ class TypedItemTest {
         Item item = new Item("Any", INIT_SELL_IN, 50);
         TypedItem typedItem = TypedItemFactory.createTypedItem(item);
         typedItem.increaseQuality();
+
         assertThat(typedItem.getQuality()).isLessThanOrEqualTo(50);
     }
 
@@ -21,6 +22,7 @@ class TypedItemTest {
         Item item = new Item("Any", INIT_SELL_IN, 0);
         TypedItem typedItem = TypedItemFactory.createTypedItem(item);
         typedItem.decreaseQuality();
+
         assertThat(typedItem.getQuality()).isGreaterThanOrEqualTo(0);
     }
 
@@ -29,6 +31,7 @@ class TypedItemTest {
         Item item = new Item("Any", INIT_SELL_IN, 0);
         TypedItem typedItem = TypedItemFactory.createTypedItem(item);
         typedItem.updateSellIn();
-        assertThat(typedItem.getSellIn()).isEqualTo(INIT_SELL_IN-1);
+
+        assertThat(typedItem.getSellIn()).isEqualTo(INIT_SELL_IN - 1);
     }
 }

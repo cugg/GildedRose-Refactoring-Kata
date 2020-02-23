@@ -18,6 +18,7 @@ class LegendaryItemTest {
     void updateSellIn_does_not_affect_sell_in() {
         TypedItem typedItem = TypedItemFactory.createTypedItem(item);
         typedItem.updateSellIn();
+
         assertThat(typedItem.getSellIn()).isEqualTo(INIT_SELL_IN);
     }
 }

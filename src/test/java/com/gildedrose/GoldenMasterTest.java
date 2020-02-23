@@ -16,6 +16,7 @@ class GoldenMasterTest {
         Path expectedFilePath = Paths.get("src/test/resources/goldenmaster30days.txt");
 
         TexttestFixture.run(30, path);
+
         assertThat(path).hasSameTextualContentAs(expectedFilePath);
     }
 
