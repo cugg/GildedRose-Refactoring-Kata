@@ -6,6 +6,8 @@ public class TypedItem {
     public static final String AGED_BRIE = "Aged Brie";
     public static final String BACKSTAGE_PASSES_TO_A_TAFKAL_80_ETC_CONCERT = "Backstage passes to a TAFKAL80ETC concert";
     public static final String SULFURAS_HAND_OF_RAGNAROS = "Sulfuras, Hand of Ragnaros";
+    public static final int MINIMUM_QUALITY = 0;
+    public static final int MAXIMUM_QUALITY = 50;
 
     public ItemType type = DEFAULT;
     public Item item;
@@ -25,5 +27,25 @@ public class TypedItem {
                 break;
 
         }
+    }
+
+    public void increaseQuality() {
+        if (this.item.quality < MAXIMUM_QUALITY) {
+            this.item.quality += 1;
+        }
+    }
+
+    public void decreaseQuality() {
+        if (this.item.quality > MINIMUM_QUALITY) {
+            this.item.quality -= 1;
+        }
+    }
+
+    public int getQuality() {
+        return this.item.quality;
+    }
+
+    public void decreaseQualityToMinimum() {
+        this.item.quality = MINIMUM_QUALITY;
     }
 }

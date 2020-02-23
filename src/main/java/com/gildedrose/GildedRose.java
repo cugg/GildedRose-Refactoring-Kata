@@ -26,13 +26,13 @@ class GildedRose {
 
     private void updateQualityWhenExpired(TypedItem item) {
         if (item.type.equals(AGED)) {
-            increaseQuality(item);
+            item.increaseQuality();
         } else if (item.type.equals(TICKET)) {
-            item.item.quality = 0;
+            item.decreaseQualityToMinimum();
         } else if (item.type.equals(LEGENDARY)) {
             return;
         } else {
-            decreaseQuality(item);
+            item.decreaseQuality();
         }
     }
 
@@ -44,38 +44,26 @@ class GildedRose {
 
     private void updateQuality(TypedItem item) {
         if (item.type.equals(AGED)) {
-            increaseQuality(item);
+            item.increaseQuality();
         } else if (item.type.equals(TICKET)) {
             updateBackstagePassQuality(item);
         } else {
             if (!item.type.equals(LEGENDARY)) {
-                decreaseQuality(item);
+                item.decreaseQuality();
             }
         }
     }
 
     private void updateBackstagePassQuality(TypedItem item) {
-        increaseQuality(item);
+        item.increaseQuality();
 
         if (item.item.sellIn < 11) {
-            increaseQuality(item);
+            item.increaseQuality();
         }
 
         if (item.item.sellIn < 6) {
-            increaseQuality(item);
+            item.increaseQuality();
         }
 
-    }
-
-    static void increaseQuality(TypedItem item) {
-        if (item.item.quality < 50) {
-            item.item.quality = item.item.quality + 1;
-        }
-    }
-
-    static void decreaseQuality(TypedItem item) {
-        if (item.item.quality > 0) {
-            item.item.quality = item.item.quality - 1;
-        }
     }
 }
