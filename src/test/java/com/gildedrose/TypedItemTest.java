@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class TypedItemTest {
+class TypedItemTest {
 
     @Test
     void never_increases_quality_over_50() {
