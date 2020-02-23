@@ -15,9 +15,9 @@ class LegendaryItemTest {
     }
 
     @Test
-    void updateSellIn_does_not_affect_sell_in() {
+    void aging_does_not_affect_sell_in() {
         TypedItem typedItem = TypedItemFactory.createTypedItem(item);
-        typedItem.updateSellIn();
+        typedItem.aging();
 
         assertThat(typedItem.getSellIn()).isEqualTo(INIT_SELL_IN);
     }

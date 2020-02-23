@@ -7,6 +7,6 @@ class LegendaryItem extends TypedItem{
     }
 
     @Override
-    void updateSellIn() {
+    void aging() {
     }
 }

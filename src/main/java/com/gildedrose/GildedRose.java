@@ -18,7 +18,7 @@ class GildedRose {
 
     private void updateItem(TypedItem item) {
         updateQuality(item);
-        item.updateSellIn();
+        item.aging();
         if (item.getSellIn() < 0) {
             updateQualityWhenExpired(item);
         }

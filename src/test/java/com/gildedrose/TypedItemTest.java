@@ -27,10 +27,10 @@ class TypedItemTest {
     }
 
     @Test
-    void updateSellIn_decrease_sellIn_by_1() {
+    void aging_decrease_sellIn_by_1() {
         Item item = new Item("Any", INIT_SELL_IN, 0);
         TypedItem typedItem = TypedItemFactory.createTypedItem(item);
-        typedItem.updateSellIn();
+        typedItem.aging();
 
         assertThat(typedItem.getSellIn()).isEqualTo(INIT_SELL_IN - 1);
     }
