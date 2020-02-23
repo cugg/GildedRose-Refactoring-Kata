@@ -18,7 +18,7 @@ class GildedRose {
 
     private void updateItem(TypedItem item) {
         updateQuality(item);
-        updateSellIn(item);
+        item.updateSellIn();
         if (item.getSellIn() < 0) {
             updateQualityWhenExpired(item);
         }
@@ -33,12 +33,6 @@ class GildedRose {
             return;
         } else {
             item.decreaseQuality();
-        }
-    }
-
-    private void updateSellIn(TypedItem item) {
-        if (!item.type.equals(LEGENDARY)) {
-            item.decreaseSellIn();
         }
     }
 

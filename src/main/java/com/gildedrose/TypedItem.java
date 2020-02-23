@@ -1,5 +1,7 @@
 package com.gildedrose;
 
+import static com.gildedrose.ItemType.LEGENDARY;
+
 class TypedItem {
     private static final int MINIMUM_QUALITY = 0;
     private static final int MAXIMUM_QUALITY = 50;
@@ -36,7 +38,7 @@ class TypedItem {
         return this.item.sellIn;
     }
 
-    public void decreaseSellIn() {
+    void updateSellIn() {
         this.item.sellIn -= 1;
     }
 }
