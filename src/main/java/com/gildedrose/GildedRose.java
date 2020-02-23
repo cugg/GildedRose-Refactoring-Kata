@@ -11,7 +11,7 @@ class GildedRose {
 
     void updateQuality() {
         for (Item item : items) {
-            TypedItem typedItem = new TypedItem(item);
+            TypedItem typedItem = TypedItemFactory.createTypedItem(item);
             updateItem(typedItem);
         }
     }
