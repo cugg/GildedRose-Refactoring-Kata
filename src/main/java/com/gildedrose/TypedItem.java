@@ -45,10 +45,8 @@ class TypedItem {
         }
     }
 
-    private void updateQualityWhenExpired() {
-        if (type.equals(AGED)) {
-            increaseQuality();
-        } else if (type.equals(TICKET)) {
+    void updateQualityWhenExpired() {
+        if (type.equals(TICKET)) {
             decreaseQualityToMinimum();
         } else {
             decreaseQuality();

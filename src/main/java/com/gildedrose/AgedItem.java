@@ -10,4 +10,9 @@ class AgedItem extends TypedItem{
     void updateQuality() {
         increaseQuality();
     }
+
+    @Override
+    void updateQualityWhenExpired() {
+        increaseQuality();
+    }
 }
