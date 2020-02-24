@@ -17,7 +17,7 @@ class GildedRose {
     }
 
     private void updateItem(TypedItem item) {
-        updateQuality(item);
+        item.updateQuality();
         item.aging();
         if (item.getSellIn() < 0) {
             updateQualityWhenExpired(item);
@@ -33,30 +33,6 @@ class GildedRose {
             return;
         } else {
             item.decreaseQuality();
-        }
-    }
-
-    private void updateQuality(TypedItem item) {
-        if (item.type.equals(AGED)) {
-            item.increaseQuality();
-        } else if (item.type.equals(TICKET)) {
-            updateBackstagePassQuality(item);
-        } else {
-            if (!item.type.equals(LEGENDARY)) {
-                item.decreaseQuality();
-            }
-        }
-    }
-
-    private void updateBackstagePassQuality(TypedItem item) {
-        item.increaseQuality();
-
-        if (item.getSellIn() < 11) {
-            item.increaseQuality();
-        }
-
-        if (item.getSellIn() < 6) {
-            item.increaseQuality();
         }
     }
 }

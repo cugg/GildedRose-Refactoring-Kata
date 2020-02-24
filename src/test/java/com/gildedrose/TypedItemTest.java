@@ -7,6 +7,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class TypedItemTest {
 
     private static final int INIT_SELL_IN = 10;
+    private static final int INIT_QUALITY = 5;
 
     @Test
     void never_increases_quality_over_50() {
@@ -28,10 +29,20 @@ class TypedItemTest {
 
     @Test
     void aging_decrease_sellIn_by_1() {
-        Item item = new Item("Any", INIT_SELL_IN, 0);
+        Item item = new Item("Any", INIT_SELL_IN, INIT_QUALITY);
         TypedItem typedItem = TypedItemFactory.createTypedItem(item);
         typedItem.aging();
 
         assertThat(typedItem.getSellIn()).isEqualTo(INIT_SELL_IN - 1);
     }
+
+    @Test
+    void updates_decrease_quality_by_1() {
+        Item item = new Item("Any", INIT_SELL_IN, INIT_QUALITY);
+        TypedItem typedItem = TypedItemFactory.createTypedItem(item);
+        typedItem.updateQuality();
+
+        assertThat(typedItem.getQuality()).isEqualTo(INIT_QUALITY - 1);
+    }
+
 }

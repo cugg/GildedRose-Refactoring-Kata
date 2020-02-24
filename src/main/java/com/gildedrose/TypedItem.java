@@ -1,5 +1,7 @@
 package com.gildedrose;
 
+import static com.gildedrose.ItemType.*;
+
 class TypedItem {
     private static final int MINIMUM_QUALITY = 0;
     private static final int MAXIMUM_QUALITY = 50;
@@ -38,5 +40,29 @@ class TypedItem {
 
     void aging() {
         this.item.sellIn -= 1;
+    }
+
+    void updateQuality() {
+        if (this.type.equals(AGED)) {
+            increaseQuality();
+        } else if (this.type.equals(TICKET)) {
+            this.updateBackstagePassQuality();
+        } else {
+            if (!this.type.equals(LEGENDARY)) {
+                decreaseQuality();
+            }
+        }
+    }
+
+    private void updateBackstagePassQuality() {
+        increaseQuality();
+
+        if (getSellIn() < 11) {
+            increaseQuality();
+        }
+
+        if (getSellIn() < 6) {
+            increaseQuality();
+        }
     }
 }

@@ -7,11 +7,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class LegendaryItemTest {
     private static final int INIT_SELL_IN = 0;
+    public static final int INIT_QUALITY = 80;
     private Item item;
 
     @BeforeEach
     void init(){
-        item = new Item("Sulfuras, Hand of Ragnaros", INIT_SELL_IN, 80);
+        item = new Item("Sulfuras, Hand of Ragnaros", INIT_SELL_IN, INIT_QUALITY);
     }
 
     @Test
@@ -20,5 +21,13 @@ class LegendaryItemTest {
         typedItem.aging();
 
         assertThat(typedItem.getSellIn()).isEqualTo(INIT_SELL_IN);
+    }
+
+    @Test
+    void updates_do_not_affect_quality() {
+        TypedItem typedItem = TypedItemFactory.createTypedItem(item);
+        typedItem.updateQuality();
+
+        assertThat(typedItem.getQuality()).isEqualTo(INIT_QUALITY);
     }
 }
