@@ -32,9 +32,13 @@ class TypedItem {
 
     void aging() {
         this.item.sellIn -= 1;
-        if (getSellIn() < 0) {
+        if (isExpired()) {
             updateQualityWhenExpired();
         }
+    }
+
+    private boolean isExpired() {
+        return getSellIn() < 0;
     }
 
     void updateQualityWhenExpired() {
