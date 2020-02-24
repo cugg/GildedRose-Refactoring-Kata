@@ -19,20 +19,5 @@ class GildedRose {
     private void updateItem(TypedItem item) {
         item.updateQuality();
         item.aging();
-        if (item.getSellIn() < 0) {
-            updateQualityWhenExpired(item);
-        }
-    }
-
-    private void updateQualityWhenExpired(TypedItem item) {
-        if (item.type.equals(AGED)) {
-            item.increaseQuality();
-        } else if (item.type.equals(TICKET)) {
-            item.decreaseQualityToMinimum();
-        } else if (item.type.equals(LEGENDARY)) {
-            return;
-        } else {
-            item.decreaseQuality();
-        }
     }
 }

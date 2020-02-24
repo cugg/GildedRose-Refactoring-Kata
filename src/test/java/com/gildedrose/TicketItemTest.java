@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class TicketItemTest {
-    public static final int INIT_QUALITY = 40;
+    private static final int INIT_QUALITY = 40;
 
     @Test
     void updates_increase_quality_by_1_when_sellIn_is_higher_than_10() {
@@ -32,5 +32,14 @@ class TicketItemTest {
         typedItem.updateQuality();
 
         assertThat(typedItem.getQuality()).isEqualTo(INIT_QUALITY + 3);
+    }
+
+    @Test
+    void quality_falls_to_minimum_after_expiration() {
+        Item expiredItem = new Item("Backstage passes to a TAFKAL80ETC concert", 0, INIT_QUALITY);
+        TypedItem typedItem = TypedItemFactory.createTypedItem(expiredItem);
+        typedItem.aging();
+
+        assertThat(typedItem.getQuality()).isEqualTo(TypedItem.MINIMUM_QUALITY);
     }
 }

@@ -45,4 +45,13 @@ class TypedItemTest {
         assertThat(typedItem.getQuality()).isEqualTo(INIT_QUALITY - 1);
     }
 
+    @Test
+    void aging_further_than_expiration_decrease_quality_by_1() {
+        Item expiredItem = new Item("Any", 0, INIT_QUALITY);
+        TypedItem typedItem = TypedItemFactory.createTypedItem(expiredItem);
+        typedItem.aging();
+
+        assertThat(typedItem.getQuality()).isEqualTo(INIT_QUALITY - 1);
+    }
+
 }
