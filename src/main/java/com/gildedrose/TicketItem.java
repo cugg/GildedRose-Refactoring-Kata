@@ -18,4 +18,9 @@ class TicketItem extends TypedItem {
             increaseQuality();
         }
     }
+
+    @Override
+    void updateQualityWhenExpired() {
+        decreaseQualityToMinimum();
+    }
 }

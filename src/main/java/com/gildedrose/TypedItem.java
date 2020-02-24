@@ -1,7 +1,5 @@
 package com.gildedrose;
 
-import static com.gildedrose.ItemType.*;
-
 class TypedItem {
     static final int MINIMUM_QUALITY = 0;
     private static final int MAXIMUM_QUALITY = 50;
@@ -10,8 +8,8 @@ class TypedItem {
     private Item item;
 
     TypedItem(Item item, ItemType type) {
-        this.item=item;
-        this.type=type;
+        this.item = item;
+        this.type = type;
     }
 
     void increaseQuality() {
@@ -30,10 +28,6 @@ class TypedItem {
         return this.item.quality;
     }
 
-    private void decreaseQualityToMinimum() {
-        this.item.quality = MINIMUM_QUALITY;
-    }
-
     int getSellIn() {
         return this.item.sellIn;
     }
@@ -46,14 +40,15 @@ class TypedItem {
     }
 
     void updateQualityWhenExpired() {
-        if (type.equals(TICKET)) {
-            decreaseQualityToMinimum();
-        } else {
-            decreaseQuality();
-        }
+        decreaseQuality();
     }
 
     void updateQuality() {
         decreaseQuality();
     }
+
+    void decreaseQualityToMinimum() {
+        this.item.quality = MINIMUM_QUALITY;
+    }
+
 }
