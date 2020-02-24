@@ -50,8 +50,6 @@ class TypedItem {
             increaseQuality();
         } else if (type.equals(TICKET)) {
             decreaseQualityToMinimum();
-        } else if (type.equals(LEGENDARY)) {
-            return;
         } else {
             decreaseQuality();
         }
