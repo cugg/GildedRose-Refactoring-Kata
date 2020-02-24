@@ -14,8 +14,9 @@ class GoldenMasterTest {
     void safetynet() throws IOException {
         Path path = Paths.get("newrun.txt");
         Path expectedFilePath = Paths.get("src/test/resources/goldenmaster30days.txt");
+        Path inputFilePath = Paths.get("src/test/resources/goldenmasteritems.txt");
 
-        TexttestFixture.run(30, path);
+        TexttestFixture.run(30, inputFilePath, path);
 
         assertThat(path).hasSameTextualContentAs(expectedFilePath);
     }
