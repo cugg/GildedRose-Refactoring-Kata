@@ -12,7 +12,7 @@ class TypedItemTest {
     @Test
     void never_increases_quality_over_50() {
         Item item = new Item("Any", INIT_SELL_IN, 50);
-        TypedItem typedItem = TypedItemFactory.createTypedItem(item);
+        TypedItem typedItem = new TypedItem(item);
         typedItem.increaseQuality();
 
         assertThat(typedItem.getQuality()).isLessThanOrEqualTo(50);
@@ -21,7 +21,7 @@ class TypedItemTest {
     @Test
     void never_decreases_quality_under_0() {
         Item item = new Item("Any", INIT_SELL_IN, 0);
-        TypedItem typedItem = TypedItemFactory.createTypedItem(item);
+        TypedItem typedItem = new TypedItem(item);
         typedItem.decreaseQuality();
 
         assertThat(typedItem.getQuality()).isGreaterThanOrEqualTo(0);
@@ -30,7 +30,7 @@ class TypedItemTest {
     @Test
     void aging_decrease_sellIn_by_1() {
         Item item = new Item("Any", INIT_SELL_IN, INIT_QUALITY);
-        TypedItem typedItem = TypedItemFactory.createTypedItem(item);
+        TypedItem typedItem = new TypedItem(item);
         typedItem.aging();
 
         assertThat(typedItem.getSellIn()).isEqualTo(INIT_SELL_IN - 1);
@@ -39,7 +39,7 @@ class TypedItemTest {
     @Test
     void updates_decrease_quality_by_1() {
         Item item = new Item("Any", INIT_SELL_IN, INIT_QUALITY);
-        TypedItem typedItem = TypedItemFactory.createTypedItem(item);
+        TypedItem typedItem = new TypedItem(item);
         typedItem.updateQuality();
 
         assertThat(typedItem.getQuality()).isEqualTo(INIT_QUALITY - 1);
@@ -48,7 +48,7 @@ class TypedItemTest {
     @Test
     void aging_further_than_expiration_decrease_quality_by_1() {
         Item expiredItem = new Item("Any", 0, INIT_QUALITY);
-        TypedItem typedItem = TypedItemFactory.createTypedItem(expiredItem);
+        TypedItem typedItem = new TypedItem(expiredItem);
         typedItem.aging();
 
         assertThat(typedItem.getQuality()).isEqualTo(INIT_QUALITY - 1);

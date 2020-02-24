@@ -17,7 +17,7 @@ class LegendaryItemTest {
 
     @Test
     void aging_does_not_affect_sell_in() {
-        TypedItem typedItem = TypedItemFactory.createTypedItem(item);
+        TypedItem typedItem = new LegendaryItem(item);
         typedItem.aging();
 
         assertThat(typedItem.getSellIn()).isEqualTo(INIT_SELL_IN);
@@ -25,7 +25,7 @@ class LegendaryItemTest {
 
     @Test
     void update_does_not_affect_quality() {
-        TypedItem typedItem = TypedItemFactory.createTypedItem(item);
+        TypedItem typedItem = new LegendaryItem(item);
         typedItem.updateQuality();
 
         assertThat(typedItem.getQuality()).isEqualTo(INIT_QUALITY);
@@ -33,7 +33,7 @@ class LegendaryItemTest {
 
     @Test
     void expiration_does_not_affect_quality() {
-        TypedItem typedItem = TypedItemFactory.createTypedItem(item);
+        TypedItem typedItem = new LegendaryItem(item);
         typedItem.aging();
 
         assertThat(typedItem.getQuality()).isEqualTo(INIT_QUALITY);

@@ -17,7 +17,7 @@ class AgedItemTest {
 
     @Test
     void updates_increase_quality_by_1() {
-        TypedItem typedItem = TypedItemFactory.createTypedItem(item);
+        TypedItem typedItem = new AgedItem(item);
         typedItem.updateQuality();
 
         assertThat(typedItem.getQuality()).isEqualTo(INIT_QUALITY + 1);
@@ -26,7 +26,7 @@ class AgedItemTest {
     @Test
     void quality_continues_to_increase_after_expiration() {
         Item expiredItem = new Item("Aged Brie", 0, INIT_QUALITY);
-        TypedItem typedItem = TypedItemFactory.createTypedItem(expiredItem);
+        TypedItem typedItem = new AgedItem(expiredItem);
         typedItem.aging();
 
         assertThat(typedItem.getQuality()).isEqualTo(INIT_QUALITY + 1);
