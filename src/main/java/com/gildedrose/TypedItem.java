@@ -49,4 +49,9 @@ class TypedItem {
         this.item.quality = MINIMUM_QUALITY;
     }
 
+    void update() {
+        updateQuality();
+        aging();
+    }
+
 }

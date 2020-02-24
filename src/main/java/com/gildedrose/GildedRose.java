@@ -9,13 +9,7 @@ class GildedRose {
 
     void updateQuality() {
         for (Item item : items) {
-            TypedItem typedItem = TypedItemFactory.createTypedItem(item);
-            updateItem(typedItem);
+            TypedItemFactory.createTypedItem(item).update();
         }
-    }
-
-    private void updateItem(TypedItem item) {
-        item.updateQuality();
-        item.aging();
     }
 }
