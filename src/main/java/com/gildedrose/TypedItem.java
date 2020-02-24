@@ -43,9 +43,7 @@ class TypedItem {
     }
 
     void updateQuality() {
-        if (this.type.equals(AGED)) {
-            increaseQuality();
-        } else if (this.type.equals(TICKET)) {
+        if (this.type.equals(TICKET)) {
             this.updateBackstagePassQuality();
         } else {
             decreaseQuality();
