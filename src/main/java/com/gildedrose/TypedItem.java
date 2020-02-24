@@ -4,12 +4,10 @@ class TypedItem {
     static final int MINIMUM_QUALITY = 0;
     private static final int MAXIMUM_QUALITY = 50;
 
-    private ItemType type;
     private Item item;
 
-    TypedItem(Item item, ItemType type) {
+    TypedItem(Item item) {
         this.item = item;
-        this.type = type;
     }
 
     void increaseQuality() {

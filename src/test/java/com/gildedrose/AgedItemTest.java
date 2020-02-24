@@ -11,7 +11,7 @@ class AgedItemTest {
     private Item item;
 
     @BeforeEach
-    void init(){
+    void init() {
         item = new Item("Aged Brie", INIT_SELL_IN, INIT_QUALITY);
     }
 

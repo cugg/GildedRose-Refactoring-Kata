@@ -16,7 +16,7 @@ class TypedItemFactory {
             case SULFURAS_HAND_OF_RAGNAROS:
                 return new LegendaryItem(item);
             default:
-                return new TypedItem(item, DEFAULT);
+                return new TypedItem(item);
         }
     }
 }
