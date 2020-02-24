@@ -9,4 +9,8 @@ class LegendaryItem extends TypedItem{
     @Override
     void aging() {
     }
+
+    @Override
+    void updateQuality() {
+    }
 }

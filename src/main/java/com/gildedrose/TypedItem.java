@@ -48,9 +48,7 @@ class TypedItem {
         } else if (this.type.equals(TICKET)) {
             this.updateBackstagePassQuality();
         } else {
-            if (!this.type.equals(LEGENDARY)) {
-                decreaseQuality();
-            }
+            decreaseQuality();
         }
     }
 
