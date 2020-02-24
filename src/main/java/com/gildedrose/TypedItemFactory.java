@@ -1,6 +1,6 @@
 package com.gildedrose;
 
-import static com.gildedrose.ItemType.*;
+import static com.gildedrose.ItemType.DEFAULT;
 
 class TypedItemFactory {
     private static final String AGED_BRIE = "Aged Brie";
