@@ -5,9 +5,16 @@ class TypedItem {
     private static final int MAXIMUM_QUALITY = 50;
 
     private Item item;
+    private int conjuredFactor;
 
     TypedItem(Item item) {
         this.item = item;
+        this.conjuredFactor = 1;
+    }
+
+    TypedItem(Item item, int conjuredFactor) {
+        this.item = item;
+        this.conjuredFactor = conjuredFactor;
     }
 
     void increaseQuality() {
@@ -18,12 +25,16 @@ class TypedItem {
 
     void decreaseQuality() {
         if (this.item.quality > MINIMUM_QUALITY) {
-            this.item.quality -= 1;
+            this.item.quality -= conjuredFactor;
         }
     }
 
     int getQuality() {
         return this.item.quality;
+    }
+
+    void setQuality(int quality) {
+        this.item.quality = quality;
     }
 
     int getSellIn() {

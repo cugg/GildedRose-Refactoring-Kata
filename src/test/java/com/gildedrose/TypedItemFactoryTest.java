@@ -37,11 +37,4 @@ class TypedItemFactoryTest {
 
         assertThat(typedItem).isInstanceOf(TicketItem.class);
     }
-
-    @Test
-    void creates_ConjuredItem_in_case_of_conjured() {
-        TypedItem typedItem = TypedItemFactory.createTypedItem(conjured);
-
-        assertThat(typedItem).isInstanceOf(ConjuredItem.class);
-    }
 }
