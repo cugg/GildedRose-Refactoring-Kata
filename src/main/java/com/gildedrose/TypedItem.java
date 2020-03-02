@@ -3,18 +3,14 @@ package com.gildedrose;
 class TypedItem {
     static final int MINIMUM_QUALITY = 0;
     private static final int MAXIMUM_QUALITY = 50;
+    private static final String CONJURED = "conjured ";
 
     private Item item;
-    private int conjuredFactor;
+    private int conjuredTimes;
 
     TypedItem(Item item) {
         this.item = item;
-        this.conjuredFactor = 1;
-    }
-
-    TypedItem(Item item, int conjuredFactor) {
-        this.item = item;
-        this.conjuredFactor = conjuredFactor;
+        this.conjuredTimes = countConjuredTimes(item.name.toLowerCase());
     }
 
     void increaseQuality() {
@@ -25,7 +21,7 @@ class TypedItem {
 
     void decreaseQuality() {
         if (this.item.quality > MINIMUM_QUALITY) {
-            this.item.quality -= conjuredFactor;
+            this.item.quality -= (int) Math.pow(2, conjuredTimes);
         }
     }
 
@@ -65,4 +61,17 @@ class TypedItem {
         aging();
     }
 
+    private static int countConjuredTimes(final String str) {
+        int count = 0;
+        int idx = 0;
+        while ((idx = str.indexOf(TypedItem.CONJURED, idx)) != -1) {
+            count++;
+            idx += TypedItem.CONJURED.length();
+        }
+        return count;
+    }
+
+    public boolean isConjured() {
+        return conjuredTimes > 0;
+    }
 }

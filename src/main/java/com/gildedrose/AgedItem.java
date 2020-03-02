@@ -6,10 +6,6 @@ class AgedItem extends TypedItem{
         super(item);
     }
 
-    AgedItem(Item item, int conjuredFactor) {
-        super(item, conjuredFactor);
-    }
-
     @Override
     void updateQuality() {
         increaseQuality();

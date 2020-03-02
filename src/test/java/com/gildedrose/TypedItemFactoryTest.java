@@ -9,7 +9,7 @@ class TypedItemFactoryTest {
     private Item any = new Item("Elixir of the Mongoose", 5, 7);
     private Item sulfuras = new Item("Sulfuras, Hand of Ragnaros", 0, 80);
     private Item ticket = new Item("Backstage passes to a TAFKAL80ETC concert", 15, 20);
-    private Item conjured = new Item("Conjured", 2, 0);
+    private Item conjured = new Item("Conjured Aged Brie", 2, 0);
     @Test
     void creates_LegendaryItem_in_case_of_sulfuras() {
         TypedItem typedItem = TypedItemFactory.createTypedItem(sulfuras);
@@ -36,5 +36,13 @@ class TypedItemFactoryTest {
         TypedItem typedItem = TypedItemFactory.createTypedItem(ticket);
 
         assertThat(typedItem).isInstanceOf(TicketItem.class);
+    }
+
+    @Test
+    void creates_Conjured_AgedItem_in_case_of_conjured_aged_brie() {
+        TypedItem typedItem = TypedItemFactory.createTypedItem(conjured);
+
+        assertThat(typedItem).isInstanceOf(AgedItem.class);
+        assertThat(typedItem.isConjured()).isTrue();
     }
 }

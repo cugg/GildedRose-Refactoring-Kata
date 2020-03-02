@@ -6,10 +6,6 @@ class LegendaryItem extends TypedItem{
         super(item);
     }
 
-    LegendaryItem(Item item, int conjuredFactor) {
-        super(item, conjuredFactor);
-    }
-
     @Override
     void aging() {
     }
