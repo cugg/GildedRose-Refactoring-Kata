@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <Appenders>
+        <Console name="ConsoleAppender" target="SYSTEM_OUT">
+            <PatternLayout
+                    pattern="%msg%n"/>
+        </Console>
+        <File name="NewRun" fileName="newrun.txt">
+            <PatternLayout
+                    pattern="%msg%n"/>
+        </File>
+        <Async name="Async">
+            <AppenderRef ref="NewRun"/>
+        </Async>
+    </Appenders>
+    <Loggers>
+        <Root level="INFO">
+            <AppenderRef ref="ConsoleAppender"/>
+            <AppenderRef ref="NewRun"/>
+        </Root>
+    </Loggers>
+</Configuration>

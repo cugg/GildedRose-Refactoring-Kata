@@ -1,24 +1,31 @@
 package com.gildedrose;
 
-import org.junit.jupiter.api.Test;
+import static org.assertj.core.api.Assertions.*;
 
-import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.io.*;
+import java.nio.file.*;
+import java.time.*;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import org.junit.jupiter.api.*;
 
 class GoldenMasterTest {
 
     @Test
     void safetynet() throws IOException {
-        Path path = Paths.get("newrun.txt");
+
+        Path logFilePath = Paths.get("newrun.txt");
+        cleanPreviousLogFile(logFilePath);
         Path expectedFilePath = Paths.get("src/test/resources/goldenmaster30days.txt");
-        Path inputFilePath = Paths.get("src/test/resources/goldenmasteritems.txt");
 
-        TexttestFixture.run(30, inputFilePath, path);
+        Main.main(new String[]{"src/test/resources/goldenmasteritems.txt", "30"});
 
-        assertThat(path).hasSameTextualContentAs(expectedFilePath);
+        assertThat(logFilePath).hasSameTextualContentAs(expectedFilePath);
+    }
+
+    private void cleanPreviousLogFile(Path logFilePath) throws IOException {
+        if (Files.exists(logFilePath)) {
+            Files.move(logFilePath, Paths.get("oldrun-" + LocalDateTime.now().toEpochSecond(ZoneOffset.UTC) + ".txt"));
+        }
     }
 
 }

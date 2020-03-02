@@ -1,8 +1,8 @@
 package com.gildedrose;
 
-import org.junit.jupiter.api.Test;
+import static org.assertj.core.api.Assertions.*;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import org.junit.jupiter.api.*;
 
 class TypedItemFactoryTest {
     private Item agedBrie = new Item("Aged Brie", 2, 0);

@@ -1,9 +1,8 @@
 package com.gildedrose;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import static org.assertj.core.api.Assertions.*;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import org.junit.jupiter.api.*;
 
 class LegendaryItemTest {
     private static final int INIT_SELL_IN = 0;
