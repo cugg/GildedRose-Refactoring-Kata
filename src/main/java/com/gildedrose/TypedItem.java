@@ -33,10 +33,6 @@ class TypedItem {
         return this.item.quality;
     }
 
-    void setQuality(int quality) {
-        this.item.quality = quality;
-    }
-
     int getSellIn() {
         return this.item.sellIn;
     }
