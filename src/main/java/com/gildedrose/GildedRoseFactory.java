@@ -19,9 +19,9 @@ class GildedRoseFactory {
     }
 
     private static Item createItem(String line) {
-        int quality = Integer.valueOf(line.substring(line.lastIndexOf(", ")+2));
+        int quality = Integer.parseInt(line.substring(line.lastIndexOf(", ")+2));
         String lineWithoutQuality = line.substring(0, line.lastIndexOf(", "));
-        int sellIn = Integer.valueOf(lineWithoutQuality.substring(lineWithoutQuality.lastIndexOf(", ")+2));
+        int sellIn = Integer.parseInt(lineWithoutQuality.substring(lineWithoutQuality.lastIndexOf(", ")+2));
         String name = lineWithoutQuality.substring(0, lineWithoutQuality.lastIndexOf(", "));
         return new Item(name, sellIn, quality);
     }

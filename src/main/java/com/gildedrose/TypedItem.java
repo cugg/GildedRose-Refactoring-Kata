@@ -21,7 +21,7 @@ class TypedItem {
 
     void decreaseQuality() {
         if (this.item.quality > MINIMUM_QUALITY) {
-            this.item.quality -= (int) Math.pow(2, conjuredTimes);
+            this.item.quality -= 1 << conjuredTimes;
         }
     }
 
